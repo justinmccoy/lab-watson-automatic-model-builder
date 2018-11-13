@@ -115,8 +115,9 @@ console.log(' ');
 			url: scoringHref,
 			method: "POST",
 			headers: {
-			   Authorization: 'Bearer ' + token				  
+			   Authorization: 'Bearer ' + token			 
 			},
+			qs: {},
 			json: req.body.input
 		};
 		request(opts, function(err, r, body) {
