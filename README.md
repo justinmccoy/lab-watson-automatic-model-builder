@@ -34,13 +34,13 @@ When the reader has completed this Code Pattern, they will understand how to:
 # Steps
 1. [Create an instance of the Watson Studio Service](#1-create-an-instance-of-the-watson-studio-service)
 2. [Welcome to Watson Studio](#2-welcome-to-watson-studio)
-3. [Create an instance of the Watson Machine Learning Service](#3-create-an-instance-of-the-watson-machine-learning-service)
 3. [Create a project in Watson Studio and bind it to your Watson Machine Learning service instance](#3-create-a-project-in-watson-studio-and-bind-it-to-your-watson-machine-learning-service-instance)
-4. [Save the credentials for your Watson Machine Learning Service](#4-save-the-credentials-for-your-watson-machine-learning-service)
-5. [Upload and explore data](#5-upload-and-explore-data)
-6. [Train a Machine Learning model](#6-train-a-machine-learning-model)
-7. [Deploy the saved predictive model as a scoring service](#7-deploy-the-saved-predictive-model-as-a-scoring-service)
-8. [Deploy the testing application](#8-deploy-the-testing-application)
+4. [Create an instance of the Watson Machine Learning Service](#4-create-an-instance-of-the-watson-machine-learning-service)
+5. [Save the credentials for your Watson Machine Learning Service](#5-save-the-credentials-for-your-watson-machine-learning-service)
+6. [Upload and explore data](#6-upload-and-explore-data)
+7. [Train a Machine Learning model](#7-train-a-machine-learning-model)
+8. [Deploy the saved predictive model as a scoring service](#8-deploy-the-saved-predictive-model-as-a-scoring-service)
+9. [Deploy the testing application](#9-deploy-the-testing-application)
 
 
 ## Prerequisites
@@ -54,19 +54,21 @@ As of 2/5/2018, the Machine Learning service on IBM Cloud is only available in t
 ### 1. Create an instance of the Watson Studio Service
 Watson Studio is your IDE for Machine Learning and Data Science, combining opensource tools, and libraries into a unified Cloud based platform for discovering and sharing insights. For this lab we're using the Automatic Model Builder simplifying the data preparation, training, and evaluation steps of machine learning. 
 
-* In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`. 
+1. In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`. 
 
-* In the navigation menu at the left, select `AI` and then select `Watson Studio`.
+2. In the navigation menu at the left, select `AI` and then select `Watson Studio`.
 
   ![](doc/source/images/watson-studio-service.png?raw=true)
 
-* Verify this service is being created in the Dallas region, and you've selected the lite/free pricing plan. Note the lite/free plan only allows you to add a single user to your project, and is limited in the compute capacity hours.  More details on limites and to monitor usage is available in the [documentation](https://dataplatform.cloud.ibm.com/docs/content/admin/monitor-resources.html?context=analytics&linkInPage=true).
+3. Verify this service is being created in the `Dallas region`, and you've selected the `lite/free` pricing plan.
+
+Note the `lite/free` plan only allows you to add a single user to your project, and is limited in the compute capacity hours.  More details on limits and how to monitor usage is available in the [documentation](https://dataplatform.cloud.ibm.com/docs/content/admin/monitor-resources.html?context=analytics&linkInPage=true).
 
   ![](doc/source/images/watson-studio-create.png?raw=true)
 
-* Click `Create`
+4. Click `Create`
 
-* Launch your newly created Watson Studio Environment
+5. Launch your newly created Watson Studio Environment by clicking `Get Started`
 
   ![](doc/source/images/launch-watson-studio.png?raw=true)
  
@@ -91,51 +93,40 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
 
   ![](doc/source/images/watson-studio-overview.png?raw=true)
   
-   1. Projects - Organize resources used when working with data; here you see your most recently updated projects
-   2. Toos - Quick links to commonly used Data Science and ML Tools including RStudio, Data Refinery, Jupyter Notebooks, or a Visual Neturl Network Model Builder
-   3. Catalog - Create and manage data policies for managed or connected data resources
-   4. Community - Links to the best content found by IBM Data Scientists, including example notebooks, datasets, and tutorials
-   5. Services - Create Watson, data, and compute services and connections. Such as Watson Visual Recognition, or Apache Spark 
-   6. Manage - Account wide configuration, including Anaconda environments, security, catalogs, billing
-   7. Hamburger Menu - Access to IBM Cloud dashboard and tools
-   8. IBM Studio Menu - Quick link to the Watson Studio welcome page
-   9. Account Profile and Settings - Personal account settings
+   1. **Projects** - Organize resources used when working with data; here you see your most recently updated projects
+   2. **Toos** - Quick links to commonly used Data Science and ML Tools including RStudio, Data Refinery, Jupyter Notebooks, or a Visual Neturl Network Model Builder
+   3. **Catalog** - Create and manage data policies for managed or connected data resources
+   4. **Community** - Links to the best content found by IBM Data Scientists, including example notebooks, datasets, and tutorials
+   5. **Services** - Create Watson, data, and compute services and connections. Such as Watson Visual Recognition, or Apache Spark 
+   6. **Manage** - Account wide configuration, including Anaconda environments, security, catalogs, billing
+   7. **Hamburger Menu** - Access to IBM Cloud dashboard and tools
+   8. **IBM Studio Menu** - Quick link to the Watson Studio welcome page
+   9. **Account Profile and Settings** - Personal account settings
 
 #### Overview Project Page
 
   ![](doc/source/images/watson-studio-project-overview.png?raw=true)
   
-  1.
-  2.
-  3.
-  4.
-  5.
-  6.
+  1. **Overview** - The page you're seeing now, shows who is collaborating on the projects, and number of assets associated
+  2. **Assets** - Links to each asset found within the project, broken down into categories
+  3. **Environments** - Track you capacity units used, and manage Anaconda environments. 
+  4. **Access Control** - Manage collaborators for project
+  5. **Readme** - Markdown documentation for projecct
+  6. **Add to Project** - Create, connect, or import new assets to project
 
-### 2. Create an instance of the Watson Machine Learning Service
-
-* In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`.
-
-* In the navigation menu at the left, select `AI` and then select `Machine Learning`.
-
-  ![](doc/source/images/watson-ml-service.png?raw=true)
-
-* Verify this service is being created in the Dallas region.
-
-  ![](doc/source/images/watson-ml-create.png?raw=true)
-
-* Click `Create`.
+### 3. Create a project in Watson Studio and bind it to your Watson Machine Learning service instance
+A project is how you organize your resources to achieve a particular goal. Your project resources can include data, collaborators, and analytic assets like notebooks and models. Projects depends on a connection to object storage to store assets. Each project has a separate bucket to hold the project's assets. 
 
 
-### 4. Create a project in IBM Data Science Experience and bind it to your Watson Machine Learning service instance
-
-* In a new browser tab go to [https://datascience.ibm.com](https://datascience.ibm.com).
-
-* Click on `Sign In` at the top of the page.
-
-* From the dashboard, click on `New Project` from the dashboard.
+1. From the Watson Studio dashboard getting started display, click on `Create Project`, or `New Project` 
 
   ![](doc/source/images/new-project.png?raw=true)
+
+2. Select project type. There are many different tools built into Watson Studio and multiple views are built to simplify the features shown to users.  Select the `Standard Project` where all features are available, and click `Create Project`.
+
+  ![](doc/source/images/standard-project.png?raw=true)
+  
+3. 
 
 * DSX projects depend on two services: Object Storage, and a Compute Engine.  If you don't already have Object Storage or a Compute Engine, you can create a new instance of each service while defining a new project.  The _New Project_ panel is easy to use, either select an existing service on the right, or create a new one.  In the example below services need to be created.
 
@@ -176,6 +167,32 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
   ![](doc/source/images/associated-services.png?raw=true)
 
 * Leave the browser tab open for later.
+
+
+### 4. Create an instance of the Watson Machine Learning Service
+
+Machine Learning is a service on IBM Cloud with features for training and deploying machine learning models and neural networks:
+
+* Interfaces for building, training, and deploying models: [Python client library](https://wml-api-pyclient.mybluemix.net/), [Command line interface](https://dataplatform.cloud.ibm.com/docs/content/analyze-data/ml_dlaas_environment.html), [REST API](https://watson-ml-api.mybluemix.net/)
+* Deployment infrastructure for hosting your trained models
+* Hyperparameter optimization for training complex neural networks
+* Distributed deep learning for distributing training runs across multiple servers
+* GPUs for faster training
+
+In this lab we're using the Automatic Model Builder, a feature of the Watson Machine Learning Service. The Automatic Model Builder guides you, step by step, through building a model that uses popular machine learning algorithms. Just upload your training data, and then let the model builder automatically prepare your data and recommend techniques that suit your data.
+
+1. In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`.
+
+2. In the navigation menu at the left, select `AI` and then select `Machine Learning`.
+
+  ![](doc/source/images/watson-ml-service.png?raw=true)
+
+3. Verify this service is being created in the `Dallas region`.
+
+  ![](doc/source/images/watson-ml-create.png?raw=true)
+
+4. Click `Create`.
+
 
 ### 5. Save the credentials for your Watson Machine Learning Service
 
