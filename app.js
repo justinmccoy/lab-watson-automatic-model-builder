@@ -125,8 +125,8 @@ console.log(' ');
 			   res.status(500).send(err);
 			}
 			else {
-			   console.log('Reply from scoring ' + res.json(body));				
-                	   res.json(body);
+			   console.log('Reply from scoring ' + res.json);				
+                	   res.json;
 			}
 				
 		});
