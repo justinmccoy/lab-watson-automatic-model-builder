@@ -60,7 +60,7 @@ Watson Studio is your IDE for Machine Learning and Data Science, combining opens
 
   ![](doc/source/images/watson-studio-service.png?raw=true)
 
-* Verify this service is being created in the Dallas region, and you've selected the lite/free pricing plan. Note the lite/free plan only allows you to add a single user to your project, and is limited in the compute capacity hours.  More details on limites and to monitor usage is available in the (documentation)[https://dataplatform.cloud.ibm.com/docs/content/admin/monitor-resources.html?context=analytics&linkInPage=true}.
+* Verify this service is being created in the Dallas region, and you've selected the lite/free pricing plan. Note the lite/free plan only allows you to add a single user to your project, and is limited in the compute capacity hours.  More details on limites and to monitor usage is available in the [documentation](https://dataplatform.cloud.ibm.com/docs/content/admin/monitor-resources.html?context=analytics&linkInPage=true).
 
   ![](doc/source/images/watson-studio-create.png?raw=true)
 
@@ -71,7 +71,6 @@ Watson Studio is your IDE for Machine Learning and Data Science, combining opens
   ![](doc/source/images/launch-watson-studio.png?raw=true)
  
  
-  
   
 ### 2. Welcome to Watson Studio
 
@@ -86,7 +85,7 @@ You can think of Watson Studio AI tools in four categories:
 * Machine learning
 * Deep learning
 
-Documentation is available (here)[https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html?context=analytics]
+Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html?context=analytics)
 
 #### Overview Landing Page
 
@@ -101,8 +100,9 @@ Documentation is available (here)[https://dataplatform.cloud.ibm.com/docs/conten
    7. Hamburger Menu - Access to IBM Cloud dashboard and tools
    8. IBM Studio Menu - Quick link to the Watson Studio welcome page
    9. Account Profile and Settings - Personal account settings
-  
-  
+
+#### Overview Project Page
+
   ![](doc/source/images/watson-studio-project-overview.png?raw=true)
   
   1.
