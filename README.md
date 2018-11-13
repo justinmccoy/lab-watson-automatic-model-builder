@@ -34,10 +34,11 @@ When the reader has completed this Code Pattern, they will understand how to:
 # Steps
 1. [Create an instance of the Watson Studio Service](#1-create-an-instance-of-the-watson-studio-service)
 2. [Welcome to Watson Studio](#2-welcome-to-watson-studio)
-3. [Create a project in Watson Studio and bind it to your Watson Machine Learning service instance](#3-create-a-project-in-watson-studio-and-bind-it-to-your-watson-machine-learning-service-instance)
-4. [Create an instance of the Watson Machine Learning Service](#4-create-an-instance-of-the-watson-machine-learning-service)
+3. [Create a project in Watson Studio and upload training data](#3-create-a-project-in-watson-studio-and-upload-training-data)
+4. [Create an instance of the Watson Machine Learning Service and associate it to project](#4-create-an-instance-of-the-watson-machine-learning-service-and-associate-it-to-project)
+5. [Explore the data](#5-upload-and-explore-data)
+
 5. [Save the credentials for your Watson Machine Learning Service](#5-save-the-credentials-for-your-watson-machine-learning-service)
-6. [Upload and explore data](#6-upload-and-explore-data)
 7. [Train a Machine Learning model](#7-train-a-machine-learning-model)
 8. [Deploy the saved predictive model as a scoring service](#8-deploy-the-saved-predictive-model-as-a-scoring-service)
 9. [Deploy the testing application](#9-deploy-the-testing-application)
@@ -51,7 +52,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 As of 2/5/2018, the Machine Learning service on IBM Cloud is only available in the US South or United Kingdom regions.
 
-### 1. Create an instance of the Watson Studio Service
+## 1. Create an instance of the Watson Studio Service
 Watson Studio is your IDE for Machine Learning and Data Science, combining opensource tools, and libraries into a unified Cloud based platform for discovering and sharing insights. For this lab we're using the Automatic Model Builder simplifying the data preparation, training, and evaluation steps of machine learning. 
 
 1. In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`. 
@@ -74,7 +75,7 @@ Note the `lite/free` plan only allows you to add a single user to your project, 
  
  
   
-### 2. Welcome to Watson Studio
+## 2. Welcome to Watson Studio
 
 IBM Watson Studio is a collaborative environment with AI tools that you and your team can use to collect and prepare training data, and to design, train, and deploy machine learning models.
 
@@ -114,7 +115,7 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
   5. **Readme** - Markdown documentation for projecct
   6. **Add to Project** - Create, connect, or import new assets to project
 
-### 3. Create a project in Watson Studio and bind it to your Watson Machine Learning service instance
+## 3. Create a project in Watson Studio and upload training data
 A project is how you organize your resources to achieve a particular goal. Your project resources can include data, collaborators, and analytic assets like notebooks and models. Projects depends on a connection to object storage to store assets. Each project has a separate bucket to hold the project's assets. 
 
 
@@ -126,50 +127,35 @@ A project is how you organize your resources to achieve a particular goal. Your 
 
   ![](doc/source/images/standard-project.png?raw=true)
   
-3. 
+3. Watson Studio projects depend on Object Storage for storing project assets such as notebooks, models, and data. These project assets are created in a project specific bucket within object storage.  If you don't already have Object Storage defined you can create a new instance of the service directly from the New Project dialog. Under `Define storage` select `Add`. In the Cloud Object Storage service creation menu, accept the default options, select `Lite` and then `Create`.  
 
-* DSX projects depend on two services: Object Storage, and a Compute Engine.  If you don't already have Object Storage or a Compute Engine, you can create a new instance of each service while defining a new project.  The _New Project_ panel is easy to use, either select an existing service on the right, or create a new one.  In the example below services need to be created.
+**Note:**  You cannot define two Object Storage services under the free tier of IBM Cloud; if you already have object storage defined, choose `Existing` as highlighted in the screenshot below.
 
   ![](doc/source/images/create-services.png?raw=true)
+  
+  
+  ![](doc/source/images/create-services-cos.png?raw=true)
+  
+  
+4. With object storage created, or existing object storage linked, click `Refresh` allowing Watson Studio to discover the newly created service. Enter _Watson ML Demo_ as the project name and click `Create`.
 
-> Note: Services created must be in the same region, and space, as your Data Science Experience service.
-
-* Enter _Watson ML Integration_ as the project name and click `Create`.
-
-* From within the new project `Overview` panel, click `Add to project` on the top right, selecting `Data asset`.
+5. From within the new project's `Overview` panel, click `Add to project` on the top right, selecting `Data asset`.
 
   ![](doc/source/images/add-to-project.png?raw=true)
 
-  A panel on the right of the screen appears, select `load` and click on `Browse` to upload the data file you'll use to create a predictive model.
+  A panel on the right of the screen appears, select `Load` and click on `Browse` to upload the data file you'll use to create a predictive model.
 
   ![](doc/source/images/add-data-asset.png?raw=true)
 
-* On your machine, browse to the location of the file **patientdataV6.csv** in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
+6. On your machine, browse to the location of the file [**patientdataV6.csv**](https://raw.githubusercontent.com/justinmccoy/predictive-model-on-watson-ml/master/data/patientdataV6.csv) in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
 
-* Once successfully uploaded, the file should appear in the `Data Assets` section.
+Once successfully uploaded, the file should appear in the `Data Assets` section of `Assets`.
 
   ![](doc/source/images/data-assets.png?raw=true)
 
-* Click on `Settings` for the project.
+Congratulations, you've created a new Machine Learning Project and uploaded training data.
 
-  ![](doc/source/images/settings.png?raw=true)
-
-* Click on add associated service and select `Machine Learning`.
-
-  ![](doc/source/images/add-associated-service.png?raw=true)
-
-* Choose your existing Machine Learning instance and click on `Select`.
-
-  ![](doc/source/images/choose-ml-service.png?raw=true)
-
-* The Watson Machine Learning service is now listed as one of your `Associated Services`.
-
-  ![](doc/source/images/associated-services.png?raw=true)
-
-* Leave the browser tab open for later.
-
-
-### 4. Create an instance of the Watson Machine Learning Service
+## 4. Create an instance of the Watson Machine Learning Service and associate it to project
 
 Machine Learning is a service on IBM Cloud with features for training and deploying machine learning models and neural networks:
 
@@ -181,17 +167,28 @@ Machine Learning is a service on IBM Cloud with features for training and deploy
 
 In this lab we're using the Automatic Model Builder, a feature of the Watson Machine Learning Service. The Automatic Model Builder guides you, step by step, through building a model that uses popular machine learning algorithms. Just upload your training data, and then let the model builder automatically prepare your data and recommend techniques that suit your data.
 
-1. In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`.
+1. Click on `Settings` for the project, then `Add Service` under `Associate Services` and finally, select `Watson` to add a Watson service to the project.  Note there are several types of servcies we can assoicate with a project, including Dashboards, and connections to existing Apache Spark services.
 
-2. In the navigation menu at the left, select `AI` and then select `Machine Learning`.
+  ![](doc/source/images/settings.png?raw=true)
 
-  ![](doc/source/images/watson-ml-service.png?raw=true)
+2. Select `Machine Learning` from the list of available Watson Services.
 
+  ![](doc/source/images/add-associated-service.png?raw=true)
+
+**Note:** If you have an existing Machine Learning service select your `Existing` service instead of creating a new one.
+
+  ![](doc/source/images/choose-ml-service.png?raw=true)
+  
 3. Verify this service is being created in the `Dallas region`.
 
   ![](doc/source/images/watson-ml-create.png?raw=true)
 
 4. Click `Create`.
+
+The Watson Machine Learning service is now listed as one of your `Associated Services`. 
+
+
+## 5. Explore the Data
 
 
 ### 5. Save the credentials for your Watson Machine Learning Service
