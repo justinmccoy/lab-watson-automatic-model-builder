@@ -36,8 +36,10 @@ When the reader has completed this Code Pattern, they will understand how to:
 2. [Welcome to Watson Studio](#2-welcome-to-watson-studio)
 3. [Create a project in Watson Studio and upload training data](#3-create-a-project-in-watson-studio-and-upload-training-data)
 4. [Create an instance of the Watson Machine Learning Service and associate it to project](#4-create-an-instance-of-the-watson-machine-learning-service-and-associate-it-to-project)
-5. [Train a Machine Learning model](#5-train-a-machine-learning-model)
-
+5. [Explore the Data](#5-explore-the-data)
+6. [Train a Machine Learning Model](#6-train-a-machine-learning-model)
+7. [Deploy a Machine Learning Model as a Web Service](#7-deploy-a-machine-learning-model-as-a-web-service)
+8. [Consume the Model 
 
 
 5. [Explore the data](#5-upload-and-explore-data)
@@ -190,8 +192,10 @@ In this lab we're using the Automatic Model Builder, a feature of the Watson Mac
 
 The Watson Machine Learning service is now listed as one of your `Associated Services`. 
 
+## 5. Explore the Data
 
-## 5. Train a Machine Learning model
+
+## 6. Train a Machine Learning model
 The Automatic Model Builder tool in Watson Studio, backed by the Watson Machine Learning Service simplifies two fundamental operations of machine learning: training and scoring.
 
 *Training* is the process of refining an algorithm so that it can learn from a data set. The output of this operation is called a model. A model encompasses the learned coefficients of mathematical expressions.
@@ -225,18 +229,42 @@ Select `Manual` to define the evaluator algorithms, they type of model to train,
   
   
   1. **Selecting a Label Column** - The Label Column is what we would like to predict. In this usecase we are trying to predict if someone is at risk of heartrate failure or not. Looking at the data from previous steps we know there's a *HEARTRATEFAILURE* column and it's represented by a string value of *Y* or *N* for each sample.  Select `HEARTRATEFAILURE`, as it's what we're trying to predict.
-  2. **Selecting Feature Columns** - The Feature Column(s), are what fields in each sample are used to make a prediction. From previous steps we identifyed several columns in our dataset that represent different *Features* of each sample that might influence if a patient is at risk of heart rate failure.  Here the Automatic Model Building tool will default to selecting all columns, excluding the Label Column of *HEARTRATEFAILURE* to use in making a prediction.
-  3. **Selecting Model Type** - The Automatic Model Builder simplifies *Classification* and *Regression* tasks, where *classification* builds a model to predict a discreate class, and *Regression* builds a model to predict a continious value. Since we're trying to predict either *Y* someone is at risk of heartrate failure or *N* someone is not at risk of heartrate failure we're working on a `Binary Classification` task, where the prediction can either be 0 or 1. Based on the `Label Column` selected the Automatic Model Builder will have already selected `Binary Classification`.
-  4. **Validation Split** - 
-  5.
+  2. **Selecting Feature Columns** - The Feature Column(s), are what fields in each sample are used to make a prediction. From previous steps we identified several columns in our dataset that represent different *Features* of each sample that might influence if a patient is at risk of heartrate failure. Here the Automatic Model Builder tool will default to selecting all columns, excluding the `Label Column` of `HEARTRATEFAILURE` to use in making a prediction.
+  3. **Selecting Model Type** - The Automatic Model Builder simplifies *Classification* and *Regression* tasks, where *classification* builds a model to predict a discreate class, and *Regression* builds a model to predict a continious value. Since we're trying to predict either *Y* someone is at risk of heartrate failure or *N* someone is not at risk of heartrate failure we're working on a `Binary Classification` task, where the prediction can either be 0 or 1. Based on the `Label Column` selected, the Automatic Model Builder will have already selected `Binary Classification` for use in training.
+  4. **Validation Split** - Training machine learning models is an iterative process and the data used to train a model should not be used when evaluating the accuracy of a model, as data used in training is already known and has shaped how the model formed. Validation of a models accuracy depends on usage of data the model has never seen before.  This step splits up all of our data setting some asside for training, test, and eventually validation. A common division of this data is usually 60% Training, 20% Test, and 20% validation.  The Automatic Model Builder has already set these defaults.
+  5. **Estimators** - The machine learning algorithms used for finding the best fit of `Features` to `Label` are estimators.  These estimators are hardest part of machine learning, and finding the right one depends on the input data and type of problem, regression, classification, clustering, or dimensionality reduction. With the Automatic Model Builder we can select several different *estimators* and compare their accuracy on the problem of predicting heartrate failure. 
   
+6. Click on `Add Estimators`, and select the 4 available: Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Gradient Boosted Tree Classifier.
 
-## 6. Score the newly trained, and deployed model
+  ![](doc/source/images/select-estimator.png?raw=true)
+  
+7. The Automatic Model Builder is now configured and ready to run, click `Next`
 
-Although training is a critical step in the machine learning process, Watson Machine Learning enables you to streamline the functioning of your models by deploying them and getting actual business value from them over time and through all of their iterations.
+  ![](doc/source/images/amb-configured.png?raw=true)
+  
+8. Evaluate the effectiveness of each model. Models are compared for accuracy by the *Area Under ROC Curve*, and the *Area under PR Curve*, where the higher the value the more accurate the model. The ROC Curve is calculated by comparing the *True Positive* rate vs the *False Positive Rate*.  The precision-recall (PR) Curve shows the tradeoff between precision and recall for different threshold. A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate. High scores for both show that the classifier is returning accurate results (high precision), as well as returning a majority of all positive results (high recall).  
+
+For our task of predicting heartrate failure, we want high percision with a low false positive, false negative rate.  Unfortunally with the data we have we're about 60% accurate with high percision using a Random Forest Classifier.
 
 
-## 5. Explore the Data
+Select the trained model that has the highest *Area Under PR Curve* and click `Save`
+
+![](doc/source/images/amb-evaluation.png?raw=true)
+
+9. Congratulations, you've trained and evaluated a machine learning model without writing any code!
+
+
+**Note:** Your model will have different results and accuracy due to the randomness of spliting up the training and evaluation data.
+
+
+## 7. Deploy a Machine Learning Model as a Web Service
+
+Although training is a critical step in the machine learning process, the model still need to be packaged, fronted with an API, and packaged as a web service. Watson Machine Learning enables you to streamline this deployment of the model into production. 
+
+
+
+
+
 
 
 ### 5. Save the credentials for your Watson Machine Learning Service
