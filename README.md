@@ -36,10 +36,13 @@ When the reader has completed this Code Pattern, they will understand how to:
 2. [Welcome to Watson Studio](#2-welcome-to-watson-studio)
 3. [Create a project in Watson Studio and upload training data](#3-create-a-project-in-watson-studio-and-upload-training-data)
 4. [Create an instance of the Watson Machine Learning Service and associate it to project](#4-create-an-instance-of-the-watson-machine-learning-service-and-associate-it-to-project)
+5. [Train a Machine Learning model](#5-train-a-machine-learning-model)
+
+
+
 5. [Explore the data](#5-upload-and-explore-data)
 
 5. [Save the credentials for your Watson Machine Learning Service](#5-save-the-credentials-for-your-watson-machine-learning-service)
-7. [Train a Machine Learning model](#7-train-a-machine-learning-model)
 8. [Deploy the saved predictive model as a scoring service](#8-deploy-the-saved-predictive-model-as-a-scoring-service)
 9. [Deploy the testing application](#9-deploy-the-testing-application)
 
@@ -186,6 +189,51 @@ In this lab we're using the Automatic Model Builder, a feature of the Watson Mac
 4. Click `Create`.
 
 The Watson Machine Learning service is now listed as one of your `Associated Services`. 
+
+
+## 5. Train a Machine Learning model
+The Automatic Model Builder tool in Watson Studio, backed by the Watson Machine Learning Service simplifies two fundamental operations of machine learning: training and scoring.
+
+*Training* is the process of refining an algorithm so that it can learn from a data set. The output of this operation is called a model. A model encompasses the learned coefficients of mathematical expressions.
+
+*Scoring* is the operation of predicting an outcome by using a trained model. The output of the scoring operation is another data set containing predicted values.
+
+Let's create a machine learning pipeline that leverages data transformations and machine learning algorithms to train several models and evaluate their accuracy; all without writing any code.
+
+
+1. Starting from the `Assets` tab of our Watson Studio Project *Watson ML Demo*, select `Add to Project` and `Model`
+
+  ![](doc/source/images/add-model-to-project.png?raw=true)
+  
+2. Within the *New Model* dialog, name the model *Heart Failure Prediction Model*, select the runtime that will be used for building a data pipeline, and training.  The `Default Spark Scala 2.11` environment should be used, and will consume 1.5 capacity units per hour of training. 
+
+Select `Manual` to define the evaluator algorithms, they type of model to train, and how to split training and validation data.
+
+  ![](doc/source/images/create-model.png?raw=true)
+
+**Note:** Alternate environments or Apache Spark runtimes can be used for training.
+  
+3. Click `Create`, to begin training and evaluating.
+
+4. Select your training dataset and click `Next`
+
+  ![](doc/source/images/select-training-data.png?raw=true)
+
+5. Configure how the Machine Learning Model is trained, and what data is used in the training. Before moving onto the next step there are several basic machine learning terms, best practices, and conventions to understand. First it's important to understand our data, what it represents, it's format, and what we're trying to predict.
+
+  ![](doc/source/images/configure-amb.png?raw=true)
+  
+  
+  1. **Selecting a Label Column** - The Label Column is what we would like to predict. In this usecase we are trying to predict if someone is at risk of heartrate failure or not. Looking at the data from previous steps we know there's a *HEARTRATEFAILURE* column and it's represented by a string value of *Y* or *N* for each sample.  Select `HEARTRATEFAILURE`, as it's what we're trying to predict.
+  2. **Selecting Feature Columns** - The Feature Column(s), are what fields in each sample are used to make a prediction. From previous steps we identifyed several columns in our dataset that represent different *Features* of each sample that might influence if a patient is at risk of heart rate failure.  Here the Automatic Model Building tool will default to selecting all columns, excluding the Label Column of *HEARTRATEFAILURE* to use in making a prediction.
+  3. **Selecting Model Type** - The Automatic Model Builder simplifies *Classification* and *Regression* tasks, where *classification* builds a model to predict a discreate class, and *Regression* builds a model to predict a continious value. Since we're trying to predict either *Y* someone is at risk of heartrate failure or *N* someone is not at risk of heartrate failure we're working on a `Binary Classification` task, where the prediction can either be 0 or 1. Based on the `Label Column` selected the Automatic Model Builder will have already selected `Binary Classification`.
+  4. **Validation Split** - 
+  5.
+  
+
+## 6. Score the newly trained, and deployed model
+
+Although training is a critical step in the machine learning process, Watson Machine Learning enables you to streamline the functioning of your models by deploying them and getting actual business value from them over time and through all of their iterations.
 
 
 ## 5. Explore the Data
