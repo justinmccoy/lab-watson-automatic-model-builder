@@ -275,10 +275,13 @@ Although training is a critical step in the machine learning process, the model 
 
 5. Double click on the deployed *Heart Failure Prediction Model Deployment* to see details of the deployed model in the `Overview` tab.  In addition to the details there are two additional tabs, one `Implementation`, and another `Test`.  The `Implementation` tab provides you with sample code for invoking the API from `cURL`, `Python`, `Java`, `JavaScript`, or `Scala`. 
 
+#### Model deployment details
 ![](doc/source/images/model-deploy-details.png?raw=true)
 
+#### Model API implementation details
 ![](doc/source/images/model-deploy-implementation.png?raw=true)
 
+#### Sample test invoking deployed Model
 ![](doc/source/images/model-deploy-test.png?raw=true)
 
 
@@ -286,7 +289,7 @@ Although training is a critical step in the machine learning process, the model 
 
 ![](doc/source/images/ibm-cloud-menu.png?raw=true)
 
-![](doc/source/images/ibm-cloud-menu-dashboard.png?raw=true)
+
 
 7. Back at the IBM Cloud Dashboard, you will be able to see all the services created during this lab.  Click on the `Watson Machine Learning Service`. 
 
@@ -325,8 +328,11 @@ Until this point in the lab, we've been working as a data scientist and data eng
 
 5. Click on the *Hamburger Menu* and return to the IBM Cloud Dashboard, and double click on the newly deployed `Cloud Foundry Application`
 
+  
   ![](doc/source/images/ibm-cloud-menu.png?raw=true)
-  ![](doc/source/images/ibm-cloud-menu-dashboard.png?raw=true)
+  
+  Select `Dashboard`
+  
   ![](doc/source/images/open-cf-app.png?raw=true)
   
 6. For our newly deployed Node.js app to communicate with the Watson Machine Learning Service without having to explicitly set credentials, a new connection between the app and service needs to be created. From within the Cloud Foundry App View select `Connections` and then `Create Connection`.
@@ -336,11 +342,15 @@ Until this point in the lab, we've been working as a data scientist and data eng
 7. Select the `Watson Machine Learning Service`, and click `Connect`. Answer `Restage` to the prompt. Restaging the Node.js app, will ensure the app has access to the Watson Machine Learning credentials. 
 
 ![](doc/source/images/cf-app-connect.png?raw=true)
+
+Click `Restage`
 ![](doc/source/images/cf-app-restage.png?raw=true)
 
 8. With the app restaged, and the model deployed go ahead and visit the App URL and test your deployed machine learning model from a Node.js web app.
 
 ![](doc/source/images/cf-app-url.png?raw=true)
+
+#### Example Node.js App
 ![](doc/source/images/cf-app-preview.png?raw=true)
 
 
