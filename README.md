@@ -39,7 +39,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 5. [Explore the Data](#5-explore-the-data)
 6. [Train a Machine Learning Model](#6-train-a-machine-learning-model)
 7. [Deploy Machine Learning Model as a Web Service](#7-deploy-machine-learning-model-as-a-web-service)
-8. [Deploy a Node.js test application in Cloud Foundry Runtime](#8-deploy-a-node.js-test-appliaction-in-cloud-foundry-runtime)
+8. [Deploy a Node.js test application in Cloud Foundry Runtime](#8-deploy-a-nodejs-test-application-in-cloud-foundry-runtime)
 
 
 
@@ -187,6 +187,21 @@ In this lab we're using the Automatic Model Builder, a feature of the Watson Mac
 The Watson Machine Learning service is now listed as one of your `Associated Services`. 
 
 ## 5. Explore the Data
+Before diving into the training of a machine learning model it's important to understand how your data is structured, what fields are available, if there is any missing data, and potentially any data that might not be useful that could be removed.  A quick way to preview data is with Data Refinery, a visual data exploration tool built into Watson Studio.
+
+1. From the *Watson ML Demo* project page in Watson Studio, select the `Assets` tab then the `Refine` action to load the patient data into Data Refinery.
+
+ ![](doc/source/images/load-data-refinery.png?raw=true)
+
+2. Understand the quality and distribution of your data using data profiler, and dozens of built-in charts, graphs, and statistics. Automatically detect data types and column classifications. Explore the data, selecting the `Profile` tab to better understand the values for the columns or features used later when building the machine learning models.
+
+ #### Data Refinery Overview
+ ![](doc/source/images/data-refinery-overview.png?raw=true)
+ 
+ #### Data Refinery Data Profile
+ ![](doc/source/images/data-refinery-profile.png?raw=true)
+ 
+3. Don't spend too long exploring data during this lab, there's still a lot more to do!
 
 
 ## 6. Train a Machine Learning model
