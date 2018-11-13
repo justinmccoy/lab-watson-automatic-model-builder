@@ -3,8 +3,6 @@ DISCLAIMER: This application is used for demonstrative and illustrative purposes
 #  Create and deploy a scoring model to predict heart failure on IBM Cloud with Watson Studio
 
 In this Code Pattern, we will use the Automatic Model Builder on Watson Studio to build a predictive model that demonstrates a potential health care use case.
-This a customized version of the Node.js sample app that is available with the [Watson Machine Learning Service on IBM Cloud](http://www.ng.bluemix.net/docs/#services/PredictiveModeling/index.html).
-See the [original app](https://github.com/pmservice/predictive-modeling-samples) for a walkthrough of the source code.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -15,18 +13,17 @@ When the reader has completed this Code Pattern, they will understand how to:
 ![](doc/source/images/architecture.png)
 
 ## Flow
-1. The developer creates an IBM Watson Studio Service.
-2. Watson Machine Learning Service depends on an Apache Spark service.
-3. Watson Studio uses Cloud Object storage to manage your data.
-4. This lab is built the Watson Automatic Model Builder, this is where the user will import data, train, and evaluate their model.
-5. Import data on heart failure.
-6. Trained models are deployed into production using IBM's Watson Machine Learning Service.
-7. A Node.js web app is deployed on IBM Cloud calling the predictive model hosted in the Watson Machine Learning Service.
-8. A user visits the web app, enters their information, and the predictive model returns a response.
+1. The developer creates a Watson Studio Service
+2. Use the Automatic Model Builder to build, train, and evaluate a model; part of the Watson Machine Learning Service
+3. Watson Studio uses Cloud Object storage to manage your data and project files 
+4. Watson Machine Learning Service depends on an Apache Spark service for model training
+5. Import data on heart failure
+6. Trained models are deployed into production using Watson Machine Learning Service
+7. A Node.js web app is deployed on IBM Cloud calling the predictive model hosted in the Watson Machine Learning Service
+8. A user visits the web app, enters their information, and the predictive model returns a response
 
 ## Included components
 * [Watson Studio](https://www.ibm.com/cloud/watson-studio): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
-
 
 ## Featured technologies
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
@@ -36,7 +33,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Steps
 1. [Create an instance of the Watson Studio Service](#1-create-an-instance-of-the-watson-studio-service)
-2. [Overview of Watson Studio](#2-overview-of-watson-studio)
+2. [Welcome to Watson Studio](#2-welcome-to-watson-studio)
 3. [Create an instance of the Watson Machine Learning Service](#3-create-an-instance-of-the-watson-machine-learning-service)
 3. [Create a project in Watson Studio and bind it to your Watson Machine Learning service instance](#3-create-a-project-in-watson-studio-and-bind-it-to-your-watson-machine-learning-service-instance)
 4. [Save the credentials for your Watson Machine Learning Service](#4-save-the-credentials-for-your-watson-machine-learning-service)
@@ -55,7 +52,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 As of 2/5/2018, the Machine Learning service on IBM Cloud is only available in the US South or United Kingdom regions.
 
 ### 1. Create an instance of the Watson Studio Service
-Watson Studio is your IDE for Machine Learning and Data Science combining opensource tools, and libraries into a unitified Cloud based platform for discovering and sharing insights. For this lab we're using the Automatic Model Builder simplifying the data preparation, training, and evaluation steps of machine leanring. 
+Watson Studio is your IDE for Machine Learning and Data Science, combining opensource tools, and libraries into a unified Cloud based platform for discovering and sharing insights. For this lab we're using the Automatic Model Builder simplifying the data preparation, training, and evaluation steps of machine learning. 
 
 * In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`. 
 
@@ -63,19 +60,36 @@ Watson Studio is your IDE for Machine Learning and Data Science combining openso
 
   ![](doc/source/images/watson-studio-service.png?raw=true)
 
-* Verify this service is being created in the Dallas region.
+* Verify this service is being created in the Dallas region, and you've selected the lite/free pricing plan. Note the lite/free plan only allows you to add a single user to your project, and is limited in the compute capacity hours.  More details on limites and to monitor usage is available in the (documentation)[https://dataplatform.cloud.ibm.com/docs/content/admin/monitor-resources.html?context=analytics&linkInPage=true}.
 
   ![](doc/source/images/watson-studio-create.png?raw=true)
 
 * Click `Create`
 
-* Login to your newly created Watson Studio Environment
+* Launch your newly created Watson Studio Environment
 
-  ![](doc/source/images/watson-studio-overview.png?raw=true)
+  ![](doc/source/images/launch-watson-studio.png?raw=true)
+ 
+ 
   
   
-### 2. Overview of Watson Studio
-  
+### 2. Welcome to Watson Studio
+
+IBM Watson Studio is a collaborative environment with AI tools that you and your team can use to collect and prepare training data, and to design, train, and deploy machine learning models.
+
+Ranging from graphical tools you can use to build a model in minutes, to tools that automate running thousands of experiment training runs and hyperparameter optimization, Watson Studio AI tools support popular frameworks, including: TensorFlow, Caffe, PyTorch, and Keras.
+
+You can think of Watson Studio AI tools in four categories:
+
+* Visual recognition
+* Natural language classification
+* Machine learning
+* Deep learning
+
+Documentation is available (here)[https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html?context=analytics]
+
+#### Overview Landing Page
+
   ![](doc/source/images/watson-studio-overview.png?raw=true)
   
    1. Projects - Organize resources used when working with data; here you see your most recently updated projects
@@ -87,6 +101,7 @@ Watson Studio is your IDE for Machine Learning and Data Science combining openso
    7. Hamburger Menu - Access to IBM Cloud dashboard and tools
    8. IBM Studio Menu - Quick link to the Watson Studio welcome page
    9. Account Profile and Settings - Personal account settings
+  
   
   ![](doc/source/images/watson-studio-project-overview.png?raw=true)
   
