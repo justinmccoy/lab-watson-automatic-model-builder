@@ -1,7 +1,7 @@
 {
-  "name": "bdadays-pm-tester",
+  "name": "Predictive Model Tester",
   "version": "0.1.0",
-  "description": "A Node.js app for testing the Predictive Model developed during BDA Days Labs",
+  "description": "A Node.js app for testing a Predictive Model deployed on the Watson Machine Learning Service",
   "scripts": {
     "start": "node app.js"
   },
