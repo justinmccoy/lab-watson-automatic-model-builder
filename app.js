@@ -23,8 +23,8 @@ if (services['pm-20']) {
    service = services['pm-20'][0];
 }
 var credentials = service.credentials;
-if (credentials != null) {	   
-		env.baseURL = credentials.url;
+if (credentials !== null) {	   
+		env.baseURL = 'https://us-south.ml.cloud.ibm.com/';
 		env.accessKey = credentials.access_key;
 		env.instance_id = credentials.instance_id;
 		var options = {
@@ -43,6 +43,7 @@ if (credentials != null) {
 			}
 			
 			token = body.token;
+			console.log('Token:' + token);
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
 			   method: 'GET',
@@ -50,7 +51,8 @@ if (credentials != null) {
 				  Authorization: 'Bearer ' + token				  
 			   },
 			   json:true
-			}
+			};
+			
 			request(opts, function(err, res, body) {
 			   if (err) {
 			      console.log('Error  from GET to retrieve scoring href ' + err);
@@ -115,10 +117,9 @@ console.log(' ');
 			url: scoringHref,
 			method: "POST",
 			headers: {
-			   'Content-Type': 'application/json',
-			   Authorization: 'Bearer ' + token			 
+			   Authorization: 'Bearer ' + token,
+			   'content-type': 'application/json'
 			},
-			qs: { instance_id: env.instance_id, deployment_id: env.deployment_id, published_model_id: env.published_model_id },	
 			json: req.body.input
 		};
 		request(opts, function(err, r, body) {
@@ -126,8 +127,14 @@ console.log(' ');
 			   res.status(500).send(err);
 			}
 			else {
-			   console.log('Reply from scoring ' + JSON.parse(body));				
-                	   JSON.parse(body);
+			   console.log('JSON.stringify: ' + JSON.stringify(body));
+			   var obj = JSON.parse(JSON.stringify(body));
+			  // console.log('Reply from scoring ' + obj);
+			   //console.log('Prediction ' + obj.values[4]);
+			   //console.log('Selection: ' + obj.values[3]);
+			   //console.log('probability: ' + obj.values[2]);
+			   //custom_response = {"Prediction":body.values[4], "Probability": body.values[2][body.values[3]] };
+			   res.json(body);
 			}
 				
 		});
@@ -165,3 +172,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 // =============================================================================
 app.listen(port);
 console.log('App started on port ' + port);
+
