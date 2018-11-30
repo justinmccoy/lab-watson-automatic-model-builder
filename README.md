@@ -51,6 +51,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 As of 2/5/2018, the Machine Learning service on IBM Cloud is only available in the US South or United Kingdom regions.
 
+Disclaimer: The Watson Studio UI evolves at a rapid pace. It is possible that the screenshots shown in this README won't match your experience exactly. Pull requests welcome!
+
 ## 1. Create an instance of the Watson Studio Service
 Watson Studio is your IDE for Machine Learning and Data Science, combining opensource tools, and libraries into a unified Cloud based platform for discovering and sharing insights. For this lab we're using the Automatic Model Builder simplifying the data preparation, training, and evaluation steps of machine learning. 
 
@@ -239,7 +241,7 @@ Select `Manual` to define the evaluator algorithms, they type of model to train,
   
   1. **Selecting a Label Column** - The Label Column is what we would like to predict. In this usecase we are trying to predict if someone is at risk of heartrate failure or not. Looking at the data from previous steps we know there's a *HEARTRATEFAILURE* column and it's represented by a string value of *Y* or *N* for each sample.  Select `HEARTRATEFAILURE`, as it's what we're trying to predict.
   2. **Selecting Feature Columns** - The Feature Column(s), are what fields in each sample are used to make a prediction. From previous steps we identified several columns in our dataset that represent different *Features* of each sample that might influence if a patient is at risk of heartrate failure. Here the Automatic Model Builder tool will default to selecting all columns, excluding the `Label Column` of `HEARTRATEFAILURE` to use in making a prediction.
-  3. **Selecting Model Type** - The Automatic Model Builder simplifies *Classification* and *Regression* tasks, where *classification* builds a model to predict a discreate class, and *Regression* builds a model to predict a continious value. Since we're trying to predict either *Y* someone is at risk of heartrate failure or *N* someone is not at risk of heartrate failure we're working on a `Binary Classification` task, where the prediction can either be 0 or 1. Based on the `Label Column` selected, the Automatic Model Builder will have already selected `Binary Classification` for use in training.
+  3. **Selecting Model Type** - The Automatic Model Builder simplifies *Classification* and *Regression* tasks, where *classification* builds a model to predict a discrete class, and *Regression* builds a model to predict a continious value. Since we're trying to predict either *Y* someone is at risk of heartrate failure or *N* someone is not at risk of heartrate failure we're working on a `Binary Classification` task, where the prediction can either be 0 or 1. Based on the `Label Column` selected, the Automatic Model Builder will have already selected `Binary Classification` for use in training.
   4. **Validation Split** - Training machine learning models is an iterative process and the data used to train a model should not be used when evaluating the accuracy of a model, as data used in training is already known and has shaped how the model formed. Validation of a models accuracy depends on usage of data the model has never seen before.  This step splits up all of our data setting some asside for training, test, and eventually validation. A common division of this data is usually 60% Training, 20% Test, and 20% validation.  The Automatic Model Builder has already set these defaults.
   5. **Estimators** - The machine learning algorithms used for finding the best fit of `Features` to `Label` are estimators.  These estimators are hardest part of machine learning, and finding the right one depends on the input data and type of problem, regression, classification, clustering, or dimensionality reduction. With the Automatic Model Builder we can select several different *estimators* and compare their accuracy on the problem of predicting heartrate failure. 
   
@@ -319,7 +321,7 @@ Although training is a critical step in the machine learning process, the model 
 
 
 ### 8. Deploy a Node.js test application in Cloud Foundry Runtime
-Until this point in the lab, we've been working as a data scientist and data engineer, gathering data, exploring data, building models, and evaluating models. In this section of the lab we deploy an existing Node.js application that has been developed to call a Machine Learning Model deployed as `Heart Failure Prediction Model Deployment` without having to explicitly specify the Watson Machine Learning credentials in the application.  This 
+Until this point in the lab, we've been working as a data scientist and data engineer, gathering data, exploring data, building models, and evaluating models. In this section of the lab we deploy an existing Node.js application that has been developed to call a Machine Learning Model deployed as `Heart Failure Prediction Model Deployment` without having to explicitly specify the Watson Machine Learning credentials in the application.
 
 1. Click on the `IBM Cloud` button below to open create a new DevOps toolchain, that is configured to download the existing Node.js application from this repo, package it, and deploy it as a new Node.js Cloud Foundry Application in IBM Cloud.
 
@@ -337,7 +339,7 @@ Until this point in the lab, we've been working as a data scientist and data eng
 
   ![](doc/source/images/toolchain.png?raw=true)
 
-4. Wait for the **Deploy Stage** to complete successfully; should take less then 5 minutes.
+4. Wait for the **Deploy Stage** to complete; should take less then 5 minutes. The first time won't be successful. We will configure credentials in the next steps.
 
   ![](doc/source/images/deploy-stage.png?raw=true)
 
