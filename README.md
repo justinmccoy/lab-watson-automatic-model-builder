@@ -45,11 +45,9 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Prerequisites
 
-* An [IBM Cloud Account](https://console.bluemix.net)
+* An [IBM Cloud Account](https://cloud.ibm.com)
 
 * A space in IBM Cloud US South or United Kingdom regions.
-
-As of 2/5/2018, the Machine Learning service on IBM Cloud is only available in the US South or United Kingdom regions.
 
 Disclaimer: The Watson Studio UI evolves at a rapid pace. It is possible that the screenshots shown in this README won't match your experience exactly. Pull requests welcome!
 
@@ -96,12 +94,12 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
   ![](doc/source/images/watson-studio-overview.png?raw=true)
   
    1. **Projects** - Organize resources used when working with data; here you see your most recently updated projects
-   2. **Toos** - Quick links to commonly used Data Science and ML Tools including RStudio, Data Refinery, Jupyter Notebooks, or a Visual Neturl Network Model Builder
+   2. **Tools** - Quick links to commonly used Data Science and ML Tools including RStudio, Data Refinery, Jupyter Notebooks, or a Visual Neural Network Model Builder
    3. **Catalog** - Create and manage data policies for managed or connected data resources
    4. **Community** - Links to the best content found by IBM Data Scientists, including example notebooks, datasets, and tutorials
    5. **Services** - Create Watson, data, and compute services and connections. Such as Watson Visual Recognition, or Apache Spark 
    6. **Manage** - Account wide configuration, including Anaconda environments, security, catalogs, billing
-   7. **Hamburger Menu** - Access to IBM Cloud dashboard and tools
+   7. **Hamburger Menu** - Access to IBM Watson Studio Tools, and IBM Cloud's Dashboard and Tools
    8. **IBM Studio Menu** - Quick link to the Watson Studio welcome page
    9. **Account Profile and Settings** - Personal account settings
 
@@ -111,7 +109,7 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
   
   1. **Overview** - The page you're seeing now, shows who is collaborating on the projects, and number of assets associated
   2. **Assets** - Links to each asset found within the project, broken down into categories
-  3. **Environments** - Track you capacity units used, and manage Anaconda environments. 
+  3. **Environments** - Track capacity units used, and manage Anaconda environments. 
   4. **Access Control** - Manage collaborators for project
   5. **Readme** - Markdown documentation for projecct
   6. **Add to Project** - Create, connect, or import new assets to project
