@@ -146,7 +146,8 @@ A project is how you organize your resources to achieve a particular goal. Your 
 
   ![](doc/source/images/add-data-asset.png?raw=true)
 
-6. On your machine, browse to the location of the file [**patientdataV6.csv**](https://raw.githubusercontent.com/justinmccoy/predictive-model-on-watson-ml/master/data/patientdataV6.csv) in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
+6. On your machine, browse to the location of the file [**patientdataV6.csv**](https://raw.githubusercontent.com/justinmccoy/lab-watson-automatic-model-builder
+/master/data/patientdataV6.csv) in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
 
 Once successfully uploaded, the file should appear in the `Data Assets` section of `Assets`.
 
@@ -323,7 +324,8 @@ Until this point in the lab, we've been working as a data scientist and data eng
 
 1. Click on the `IBM Cloud` button below to open create a new DevOps toolchain, that is configured to download the existing Node.js application from this repo, package it, and deploy it as a new Node.js Cloud Foundry Application in IBM Cloud.
 
-  [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/justinmccoy/predictive-model-on-watson-ml)
+  [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/justinmccoy/lab-watson-automatic-model-builder
+)
 
 **Note:**  Make sure to deploy the application to the same region and space as where the *Watson Machine Learning* service was created.
 
