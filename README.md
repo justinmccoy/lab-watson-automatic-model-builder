@@ -146,8 +146,7 @@ A project is how you organize your resources to achieve a particular goal. Your 
 
   ![](doc/source/images/add-data-asset.png?raw=true)
 
-6. On your machine, browse to the location of the file [**patientdataV6.csv**](https://raw.githubusercontent.com/justinmccoy/lab-watson-automatic-model-builder
-/master/data/patientdataV6.csv) in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
+6. On your machine, browse to the location of the file [**patientdataV6.csv**](https://raw.githubusercontent.com/justinmccoy/lab-watson-automatic-model-builder/master/data/patientdataV6.csv) in this repository in the **data/** directory. Select the file and click on Open (or the equivalent action for your operating system).
 
 Once successfully uploaded, the file should appear in the `Data Assets` section of `Assets`.
 
