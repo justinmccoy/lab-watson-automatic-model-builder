@@ -270,7 +270,7 @@ Select the trained model that has the highest *Area Under PR Curve* and click `S
 
 ## 7. Deploy Machine Learning Model as a Web Service
 
-Although training is a critical step in the machine learning process, the model still needs to be packaged, fronted with an API, and deployed as a web service. Watson Machine Learning streamlines deployment of machine learning model into production.
+Although training is a critical step in the machine learning process, the model still needs to be packaged, fronted with an API, and deployed as a web service. Watson Machine Learning streamlines deployment of machine learning models into production.
 
 1. Starting from the *Watson ML Demo* project view in Watson Studio, an additional asset has been added to the project. The newly trained and saved *Heart Failure Prediction Model* is now visible.
 
