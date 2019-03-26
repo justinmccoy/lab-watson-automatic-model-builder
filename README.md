@@ -16,7 +16,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 1. The developer creates a Watson Studio Service
 2. Use the Automatic Model Builder to build, train, and evaluate a model; part of the Watson Machine Learning Service
 3. Watson Studio uses Cloud Object storage to manage your data and project files 
-4. Watson Machine Learning Service depends on an Apache Spark service for model training
+4. Watson Machine Learning Service depends on an Apache Spark Scala Runtime
 5. Import data on heart failure
 6. Trained models are deployed into production using Watson Machine Learning Service
 7. A Node.js web app is deployed on IBM Cloud calling the predictive model hosted in the Watson Machine Learning Service
@@ -345,7 +345,7 @@ Until this point in the lab, we've been working as a data scientist and data eng
 
   
   ![](doc/source/images/ibm-cloud-menu.png?raw=true)
-  
+  ~
   Select `Dashboard`
   
   ![](doc/source/images/open-cf-app.png?raw=true)
